@@ -1,0 +1,3 @@
+[submodule "dictionaries/soundSpel"]
+	path = dictionaries/soundSpel
+	url = git@github.com:AmericanLiteracy/soundSpel.git
