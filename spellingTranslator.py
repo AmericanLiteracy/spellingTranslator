@@ -1,5 +1,5 @@
+# Convert from one spelling system to another
 '''
-Convert standard spelling to American Spelling
 usage: 
 python convert_html.py input.html output.html
 where input.html is the original in standard spelling,
@@ -14,48 +14,18 @@ Mark Petersen
 August 2016
 '''
 
-import numpy as np
-import string as str
 import sys
 import pickle
 import time
+
+# load dictionary:
+fileName = 'dictionaries/soundSpel.pickle'
+ss = pickle.load( open( fileName, 'rb' ) )
 
 # if len(sys.argv)<3:
 #     print "input and output files required"
 #     sys.exit()
     
-################################################
-#
-#  Read and parse dictionary
-#
-################################################
-
-
-
-# Open file of entries for American (reform) spelling.
-t0 = time.time()
-dictFileName = 'DIAMBG'
-f = open(dictFileName, 'r')
-rawString = f.read()
-f.close()
-
-# Create a python dictionary relating each
-# standard word and it's reform version
-a = rawString.split()
-standardToReform = {}
-for i in range(int(len(a)/2)):
-    standardToReform[a[2*i]] = a[2*i+1]
-
-t1 = time.time()
-print('dictionary read and create:',t1-t0)
-pickle.dump( standardToReform, open( dictFileName+'.p', 'wb' ) )
-t2 = time.time()
-print('pickle dump:',t2-t1)
-t1 = time.time()
-dictPickle = pickle.load( open( dictFileName+'.p', 'rb' ) )
-t2 = time.time()
-print('pickle read:',t2-t1)
-
 ################################################
 #
 #  Read in text file to translate
@@ -101,7 +71,7 @@ while i< len(x):
 
         # Translate word to reform spelling.
         try:
-            reformWord = standardToReform[word]
+            reformWord = ss[word]
  
             # Keep upper case the same as the original
             if x[iBeg:i].istitle():

@@ -19,3 +19,22 @@ while(True):
         ss[row[0]] = row[1]
 
 pickle.dump(ss, open(fileNameOut, 'wb' ) )
+
+
+## Open file of entries for American (reform) spelling.
+#t0 = time.time()
+#dictFileName = 'DIAMBG'
+#f = open(dictFileName, 'r')
+#rawString = f.read()
+#f.close()
+#
+## Create a python dictionary relating each
+## standard word and it's reform version
+#a = rawString.split()
+#standardToReform = {}
+#for i in range(int(len(a)/2)):
+#    standardToReform[a[2*i]] = a[2*i+1]
+#
+#t1 = time.time()
+#print('dictionary read and create:',t1-t0)
+#pickle.dump( standardToReform, open( dictFileName+'.p', 'wb' ) )
