@@ -3,8 +3,10 @@ import pickle
 
 fileNameIn = 'dictionaries/soundSpel/soundSpelWurdList.csv'
 fileNameOut = 'dictionaries/soundSpel.pickle'
+fileNameOutcsv = 'dictionaries/twoColSoundSpel.csv'
 
-fileIn = open(fileNameIn, "r")
+fileIn = open(fileNameIn, 'r')
+fileOutcsv = open(fileNameOutcsv, 'w')
 
 # ss is the soundSpel dictionary
 ss = {}
@@ -17,7 +19,10 @@ while(True):
     # remove letter header entries
     if row[0].count('[') == 0:
         ss[row[0]] = row[1]
+        lineOut = ','.join((row[0],row[1]))+'\n'
+        fileOutcsv.write(lineOut)
 
+fileOutcsv.close
 pickle.dump(ss, open(fileNameOut, 'wb' ) )
 
 
