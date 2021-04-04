@@ -36,7 +36,8 @@ ss = pickle.load( open( fileName, 'rb' ) )
 # x = f.read()
 # f.close()
 
-x = 'one two three four I love you too, though through the thicken I may judge you'
+#x = 'one two three four I love you too, though through the thicken I may judge you'
+x = input('Type text to translate and hit return:\n')
 
 ################################################
 #
@@ -96,7 +97,7 @@ while i< len(x):
 #  Save translated text as new file
 #
 ################################################
-print(x)
+print('\nTranslation:\n')
 print(''.join(y))
 
 # f = open(sys.argv[2], 'w')
